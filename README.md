@@ -1,3 +1,5 @@
+## Akaunt
+
 Within this repository, you will find the comprehensive documentation for `Akaunt`, an advanced web-based accounting system. Its primary objective is to streamline and simplify business transactions by offering user-friendly interfaces that facilitate the vouching process. With `Akaunt`, users can easily record and validate common business transactions.
 
 What sets `Akaunt` apart is its seamless integration of double-entry bookkeeping, which is a fundamental aspect of accounting. While users interact with the intuitive interfaces, the system works diligently in the background to ensure accurate and consistent bookkeeping. This automated management of double-entry bookkeeping eliminates the need for manual tracking and reduces the risk of errors, enabling users to focus on other critical aspects of their business.
