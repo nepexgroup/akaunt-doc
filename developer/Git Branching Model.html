@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Git Branching Model | Akaunt</title>
+    <meta name="generator" content="VuePress 1.8.0">
+    
+    <meta name="description" content="stand alone accounting application">
+    
+    <link rel="preload" href="/assets/css/0.styles.5a78c07b.css" as="style"><link rel="preload" href="/assets/js/app.6a1092e8.js" as="script"><link rel="preload" href="/assets/js/2.698aba3a.js" as="script"><link rel="preload" href="/assets/js/7.b6899831.js" as="script"><link rel="prefetch" href="/assets/js/10.eb6873d0.js"><link rel="prefetch" href="/assets/js/11.b85e2939.js"><link rel="prefetch" href="/assets/js/12.c5134ac8.js"><link rel="prefetch" href="/assets/js/13.024f34ec.js"><link rel="prefetch" href="/assets/js/14.10a623f8.js"><link rel="prefetch" href="/assets/js/15.13f3b6f5.js"><link rel="prefetch" href="/assets/js/16.b6e2eada.js"><link rel="prefetch" href="/assets/js/17.60bfd3b8.js"><link rel="prefetch" href="/assets/js/18.0e7da53b.js"><link rel="prefetch" href="/assets/js/19.288765bb.js"><link rel="prefetch" href="/assets/js/20.c153f705.js"><link rel="prefetch" href="/assets/js/21.b910a404.js"><link rel="prefetch" href="/assets/js/22.ebc0d231.js"><link rel="prefetch" href="/assets/js/23.250bdd1b.js"><link rel="prefetch" href="/assets/js/24.ad045fc4.js"><link rel="prefetch" href="/assets/js/25.c82a1490.js"><link rel="prefetch" href="/assets/js/3.add1e774.js"><link rel="prefetch" href="/assets/js/4.9722eedb.js"><link rel="prefetch" href="/assets/js/5.13e8eede.js"><link rel="prefetch" href="/assets/js/6.8e910919.js"><link rel="prefetch" href="/assets/js/8.5b3f73dc.js"><link rel="prefetch" href="/assets/js/9.ee241047.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.5a78c07b.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Akaunt</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><a href="/guide/" class="nav-link">
+  Guide
+</a></div><div class="nav-item"><a href="/developer/" class="nav-link router-link-active">
+  Dev
+</a></div><div class="nav-item"><a href="https://www.nepexgroup.com" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Nepex Group
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><a href="/guide/" class="nav-link">
+  Guide
+</a></div><div class="nav-item"><a href="/developer/" class="nav-link router-link-active">
+  Dev
+</a></div><div class="nav-item"><a href="https://www.nepexgroup.com" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Nepex Group
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/developer/" aria-current="page" class="sidebar-link">Developer</a></li><li><a href="/developer/Git Branching Model.html" class="active sidebar-link">Git Branching Model</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/developer/Git Branching Model.html#main-branches" class="sidebar-link">Main branches</a></li><li class="sidebar-sub-header"><a href="/developer/Git Branching Model.html#supporting-branches" class="sidebar-link">Supporting branches</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/developer/Git Branching Model.html#feature-branches" class="sidebar-link">Feature branches</a></li><li class="sidebar-sub-header"><a href="/developer/Git Branching Model.html#release-branches" class="sidebar-link">Release branches</a></li><li class="sidebar-sub-header"><a href="/developer/Git Branching Model.html#hotfix-branches" class="sidebar-link">Hotfix branches</a></li></ul></li><li class="sidebar-sub-header"><a href="/developer/Git Branching Model.html#summary" class="sidebar-link">Summary</a></li><li class="sidebar-sub-header"><a href="/developer/Git Branching Model.html#reference" class="sidebar-link">Reference</a></li></ul></li><li><a href="/developer/Versioning Software.html" class="sidebar-link">Versioning Software</a></li><li><a href="/developer/Balance Sheet.html" class="sidebar-link">Balance Sheet</a></li><li><a href="/developer/Backend.html" class="sidebar-link">Backend</a></li><li><a href="/developer/Todo.html" class="sidebar-link">Todo</a></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="git-branching-model"><a href="#git-branching-model" class="header-anchor">#</a> Git Branching Model</h1> <p><img src="/assets/img/branching-model.f3ecc3cf.png" alt="Branching model"></p> <h2 id="main-branches"><a href="#main-branches" class="header-anchor">#</a> Main branches</h2> <p>At the core, the development model is greatly inspired by existing models out there. The central repo holds two main branches with an infinite lifetime:</p> <ul><li>master</li> <li>develop</li></ul> <h4 id="key-concept"><a href="#key-concept" class="header-anchor">#</a> Key concept</h4> <ul><li>Parallel to the <strong>master</strong> branch, another branch exists called <strong>develop</strong>.</li> <li>consider <strong>origin/master</strong> to be the main branch where the source code of HEAD always reflects a <em>production-ready</em> state.</li> <li>We consider <strong>origin/develop</strong> to be the main branch where the source code of HEAD always reflects a state with the latest delivered development changes for the next release. Some would call this the <strong>“integration branch”</strong>. This is where any automatic nightly builds are built from.</li> <li>When the source code in the develop branch reaches a stable point and is ready to be released, all of the changes should be merged back into master somehow and then tagged with a release number. How this is done in detail will be discussed further on.</li> <li>Therefore, each time when changes are merged back into master, this is a new production release by definition. We tend to be very strict at this, so that theoretically, we could use a Git hook script to automatically build and roll-out our software to our production servers everytime there was a commit on master.</li></ul> <h2 id="supporting-branches"><a href="#supporting-branches" class="header-anchor">#</a> Supporting branches</h2> <p>Next to the main branches master and develop, our development model uses a variety of supporting branches to aid parallel development between team members,
+ease tracking of features, prepare for production releases and to assist in quickly fixing live production problems. Unlike the main branches, these
+branches always have a limited life time, since they will be removed eventually.</p> <ul><li>Feature branches</li> <li>Release branches</li> <li>HotFix branches</li></ul> <h4 id="key-concept-2"><a href="#key-concept-2" class="header-anchor">#</a> Key concept</h4> <ul><li>Each of these branches have a specific purpose and are bound to strict rules as to which branches may be their originating branch and which branches must be their merge targets.</li></ul> <h3 id="feature-branches"><a href="#feature-branches" class="header-anchor">#</a> Feature branches</h3> <ul><li>Feature branches (or sometimes called topic branches) are used to develop new features for the upcoming or a distant future release. When starting
+development of a feature, the target release in which this feature will be incorporated may well be unknown at that point. The essence of a feature branch
+is that it exists as long as the feature is in development, but will eventually be merged back into develop (to definitely add the new feature to the
+upcoming release) or discarded (in case of a disappointing experiment).</li> <li>Feature branches typically exist in developer repos only, not in origin.</li></ul> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># Creating a feature branch</span>
+$ <span class="token function">git</span> checkout -b myfeature develop
+<span class="token comment"># Switched to a new branch &quot;myfeature&quot;</span>
+<span class="token comment"># Incorporating a finished feature on develop</span>
+$ <span class="token function">git</span> checkout develop
+<span class="token comment"># Switched to branch 'develop'</span>
+$ <span class="token function">git</span> merge --no-ff myfeature
+<span class="token comment"># Updating ea1b82a..05e9557</span>
+<span class="token comment">#(Summary of changes)</span>
+$ <span class="token function">git</span> branch -d myfeature
+<span class="token comment"># Deleted branch myfeature (was 05e9557).</span>
+$ <span class="token function">git</span> push origin develop
+</code></pre></div><ul><li><code>--no-ff</code> flag causes the merge to always create a new commit object, even if the merge could be performed with a fast-forward. This avoids losing
+information about the historical existence of a feature branch and groups together all commits that together added the feature</li></ul> <h3 id="release-branches"><a href="#release-branches" class="header-anchor">#</a> Release branches</h3> <ul><li>Release branches support preparation of a new production release. They allow for last-minute dotting of i’s and crossing t’s. Furthermore, they allow
+for minor bug fixes and preparing meta-data for a release (version number, build dates, etc.).</li> <li>The key moment to branch off a new release branch from <strong>develop</strong> is when develop (almost) reflects the desired state of the new release.</li></ul> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># Creating a release branch</span>
+<span class="token comment"># Release branches are created from the develop branch. For example, say version 1.1.5 is the current production release and we have a big release coming </span>
+<span class="token comment"># up. The state of develop is ready for the “next release” and we have decided that this will become version 1.2 (rather than 1.1.6 or 2.0). So we branch </span>
+<span class="token comment"># off and give the release branch a name reflecting the new version number:</span>
+$ <span class="token function">git</span> checkout -b release-1.2 develop
+<span class="token comment"># Switched to a new branch &quot;release-1.2&quot;</span>
+$ ./bump-version.sh <span class="token number">1.2</span>
+<span class="token comment"># Files modified successfully, version bumped to 1.2.</span>
+$ <span class="token function">git</span> commit -a -m <span class="token string">&quot;Bumped version number to 1.2&quot;</span>
+<span class="token comment"># [release-1.2 74d9424] Bumped version number to 1.2</span>
+<span class="token comment"># 1 files changed, 1 insertions(+), 1 deletions(-)</span>
+</code></pre></div><ul><li>After creating a new branch and switching to it, we bump the version number. Here, bump-version.sh is a fictional shell script that changes some files
+in the working copy to reflect the new version. (This can of course be a manual change—the point being that some files change.) Then, the bumped version
+number is committed.</li> <li>This new branch may exist there for a while, until the release may be rolled out definitely. During that time, bug fixes may be applied in this branch
+(rather than on the develop branch). Adding large new features here is strictly prohibited. They must be merged into develop, and therefore, wait for the
+next big release.</li></ul> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># Finishing a release branch</span>
+<span class="token comment"># When the state of the release branch is ready to become a real release, some actions </span>
+<span class="token comment"># need to be carried out. First, the release branch is merged into </span>
+<span class="token comment"># master (since every commit on master is a new release by definition, remember). Next, </span>
+<span class="token comment"># that commit on master must be tagged for easy future reference to </span>
+<span class="token comment"># this historical version. Finally, the changes made on the release branch need to be </span>
+<span class="token comment"># merged back into develop, so that future releases also contain these </span>
+<span class="token comment"># bug fixes.</span>
+$ <span class="token function">git</span> checkout master
+<span class="token comment"># Switched to branch 'master'</span>
+$ <span class="token function">git</span> merge --no-ff release-1.2
+<span class="token comment"># Merge made by recursive.</span>
+<span class="token comment"># (Summary of changes)</span>
+$ <span class="token function">git</span> tag -a <span class="token number">1.2</span>
+<span class="token comment"># To keep the changes made in the release branch, we need to merge those back into </span>
+<span class="token comment"># develop, though. In Git:</span>
+$ <span class="token function">git</span> checkout develop
+<span class="token comment"># Switched to branch 'develop'</span>
+$ <span class="token function">git</span> merge --no-ff release-1.2
+<span class="token comment"># Merge made by recursive.</span>
+<span class="token comment"># (Summary of changes)</span>
+
+<span class="token comment"># This step may well lead to a merge conflict (probably even, since we have changed </span>
+<span class="token comment"># the version number). If so, fix it and commit.</span>
+<span class="token comment"># Now we are really done and the release branch may be removed, since we don’t need it </span>
+<span class="token comment"># anymore:</span>
+$ <span class="token function">git</span> branch -d release-1.2
+<span class="token comment"># Deleted branch release-1.2 (was ff452fe).</span>
+</code></pre></div><h3 id="hotfix-branches"><a href="#hotfix-branches" class="header-anchor">#</a> Hotfix branches</h3> <ul><li>Hotfix branches are very much like release branches in that they are also meant to prepare for a new production release, albeit unplanned.
+They arise from the necessity to act immediately upon an undesired state of a live production version. When a critical bug in a production version
+must be resolved immediately, a hotfix branch may be branched off from the corresponding tag on the master branch that marks the production version.</li> <li>The essence is that work of team members (on the develop branch) can continue, while another person is preparing a quick production fix.</li></ul> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># Creating the hotfix branch</span>
+<span class="token comment"># Hotfix branches are created from the master branch. For example, say version 1.2 is </span>
+<span class="token comment"># the current production release running live and causing troubles due to a severe bug. </span>
+<span class="token comment"># But changes on develop are yet unstable. We may then branch off a hotfix branch and </span>
+<span class="token comment"># start fixing the problem:</span>
+$ <span class="token function">git</span> checkout -b hotfix-1.2.1 master
+<span class="token comment"># Switched to a new branch &quot;hotfix-1.2.1&quot;</span>
+$ ./bump-version.sh <span class="token number">1.2</span>.1
+<span class="token comment"># Files modified successfully, version bumped to 1.2.1.</span>
+$ <span class="token function">git</span> commit -a -m <span class="token string">&quot;Bumped version number to 1.2.1&quot;</span>
+<span class="token comment"># [hotfix-1.2.1 41e61bb] Bumped version number to 1.2.1</span>
+<span class="token comment"># 1 files changed, 1 insertions(+), 1 deletions(-)</span>
+<span class="token comment"># Don’t forget to bump the version number after branching off!</span>
+<span class="token comment"># Then, fix the bug and commit the fix in one or more separate commits.</span>
+$ <span class="token function">git</span> commit -m <span class="token string">&quot;Fixed severe production problem&quot;</span>
+<span class="token comment"># [hotfix-1.2.1 abbe5d6] Fixed severe production problem</span>
+<span class="token comment"># 5 files changed, 32 insertions(+), 17 deletions(-)</span>
+<span class="token comment"># Finishing a hotfix branch</span>
+<span class="token comment"># When finished, the bugfix needs to be merged back into master, but also needs to be </span>
+<span class="token comment"># merged back into develop, in order to safeguard that the bugfix is included in the </span>
+<span class="token comment"># next release as well. This is completely similar to how release branches are finished.</span>
+<span class="token comment"># First, update master and tag the release.</span>
+$ <span class="token function">git</span> checkout master
+<span class="token comment"># Switched to branch 'master'</span>
+$ <span class="token function">git</span> merge --no-ff hotfix-1.2.1
+<span class="token comment"># Merge made by recursive.</span>
+<span class="token comment"># (Summary of changes)</span>
+$ <span class="token function">git</span> tag -a <span class="token number">1.2</span>.1
+<span class="token comment"># Next, include the bugfix in develop, too:</span>
+$ <span class="token function">git</span> checkout develop
+<span class="token comment"># Switched to branch 'develop'</span>
+$ <span class="token function">git</span> merge --no-ff hotfix-1.2.1
+<span class="token comment"># Merge made by recursive.</span>
+<span class="token comment"># (Summary of changes)</span>
+</code></pre></div><ul><li>The one exception to the rule here is that, <strong>when a release branch currently exists, the hotfix changes need to be merged into that release
+branch, instead of develop</strong>. Back-merging the bugfix into the release branch will eventually result in the bugfix being merged into develop too,
+when the release branch is finished. (If work in develop immediately requires this bugfix and cannot wait for the release branch to be finished,
+you may safely merge the bugfix into develop now already as well.)</li></ul> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># Finally, remove the temporary branch:</span>
+$ <span class="token function">git</span> branch -d hotfix-1.2.1
+<span class="token comment"># Deleted branch hotfix-1.2.1 (was abbe5d6).</span>
+</code></pre></div><h2 id="summary"><a href="#summary" class="header-anchor">#</a> Summary</h2> <p>While there is nothing really shocking new to this branching model, the “big picture” figure that this post began with has turned out to be
+tremendously useful in our projects. It forms an elegant mental model that is easy to comprehend and allows team members to develop a shared
+understanding of the branching and releasing processes.</p> <h2 id="reference"><a href="#reference" class="header-anchor">#</a> Reference</h2> <ul><li><a href="https://nvie.com/posts/a-successful-git-branching-model/" target="_blank" rel="noopener noreferrer">A successful Git branching model<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/developer/" class="prev router-link-active">
+        Developer
+      </a></span> <span class="next"><a href="/developer/Versioning Software.html">
+        Versioning Software
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.6a1092e8.js" defer></script><script src="/assets/js/2.698aba3a.js" defer></script><script src="/assets/js/7.b6899831.js" defer></script>
+  </body>
+</html>
