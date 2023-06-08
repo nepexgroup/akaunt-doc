@@ -1,0 +1,26 @@
+{
+  "name": "npm",
+  "version": "1.0.0",
+  "description": "Within this repository, you will find the comprehensive documentation for `Akaunt`, an advanced web-based accounting system. Its primary objective is to streamline and simplify business transactions by offering user-friendly interfaces that facilitate the vouching process. With `Akaunt`, users can easily record and validate common business transactions.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nepexgroup/akaunt-doc.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nepexgroup/akaunt-doc/issues"
+  },
+  "homepage": "https://github.com/nepexgroup/akaunt-doc#readme",
+  "devDependencies": {
+    "vuepress": "^1.9.9"
+  }
+}
